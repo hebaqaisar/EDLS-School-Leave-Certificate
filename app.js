@@ -85,7 +85,8 @@ generateBtn.addEventListener('click', async () => {
     const details = await res.json();
 
     const campus = campusSelect.value;
-    document.getElementById('regNo').value = `${campus}_${selectedStudent.edlsId}`;
+    document.getElementById('serialNo').value = `${selectedStudent.edlsId}`;
+    document.getElementById('regNo').value = `${selectedStudent.edlsId}`;
     document.getElementById('certName').value = `${details.firstName} ${details.lastName}`.trim();
     document.getElementById('fatherName').value = details.fatherName;
     document.getElementById('dob').value = details.dob;
@@ -163,6 +164,21 @@ document.addEventListener('paste', (e) => {
   reader.readAsDataURL(item.getAsFile());
 });
 
+function formatDateForPrint(isoValue){
+  if (!isoValue) return '';
+  const [y, m, d] = isoValue.split('-');
+  if (!y || !m || !d) return isoValue;
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  return `${parseInt(d, 10)} ${months[parseInt(m, 10) - 1]} ${y}`;
+}
+
+function fillPrintDateSpans(){
+  document.getElementById('leavingDatePrint').textContent =
+    formatDateForPrint(document.getElementById('leavingDate').value);
+  document.getElementById('certDatePrint').textContent =
+    formatDateForPrint(document.getElementById('certDate').value);
+}
+
 // --- Download as PDF (print) ---
 downloadBtn.addEventListener('click', () => {
   const teacherFilled = document.getElementById('teacherSigBox').dataset.filled === 'true';
@@ -181,5 +197,9 @@ downloadBtn.addEventListener('click', () => {
   }
   downloadStatus.textContent = '';
   downloadStatus.className = 'status';
+  if (document.activeElement && document.activeElement.blur){
+    document.activeElement.blur();
+  }
+  fillPrintDateSpans();
   window.print();
 });
