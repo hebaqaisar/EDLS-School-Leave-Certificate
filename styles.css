@@ -237,7 +237,21 @@ body{
       font-size: 14px;
       font-family: 'IBM Plex Sans', sans-serif;
       color: #000;
+      border-color: none;
     }
+
+    input[type="date"],
+      input[type="text"]{
+        border: none !important;
+        border-bottom: 1.5px solid #000 !important;
+        background: transparent !important;
+        -webkit-appearance: none;
+        appearance: none;
+      }
+
+      input[type="date"]::-webkit-calendar-picker-indicator{
+        display: none;
+      }
   }
 
 /* --- Header meta form (filled by / date / campus) --- */
