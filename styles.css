@@ -252,6 +252,10 @@ body{
       input[type="date"]::-webkit-calendar-picker-indicator{
         display: none !important;
       }
+
+      .cert-field textarea {
+        border: 1px solid #fff;
+      }
   }
 
 /* --- Header meta form (filled by / date / campus) --- */
