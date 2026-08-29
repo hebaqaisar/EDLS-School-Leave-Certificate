@@ -1,0 +1,9 @@
+{
+  "name": "edls-leaving-certificate",
+  "version": "1.0.0",
+  "private": true,
+  "description": "School Leaving Certificate generator for EDLS Education — pulls student, father's name, DOB, and admission date from Google Sheets, takes manual leaving details and signatures, and produces a downloadable PDF.",
+  "dependencies": {
+    "googleapis": "^140.0.1"
+  }
+}
