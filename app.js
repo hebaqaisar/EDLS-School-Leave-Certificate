@@ -135,6 +135,22 @@ function wireSignatureBox(boxId, inputId){
 wireSignatureBox('teacherSigBox', 'teacherSigFile');
 wireSignatureBox('headSigBox', 'headSigFile');
 
+// --- Local test mode: open certificate.html?test=1 to preview the
+// certificate + PDF flow without any backend/deployment — fills in dummy
+// data and reveals the preview immediately. Safe to leave in; does nothing
+// unless that exact query param is present.
+if (new URLSearchParams(location.search).get('test') === '1'){
+  document.getElementById('regNo').value = 'C01_EDLS0001';
+  document.getElementById('certName').value = 'Test Student';
+  document.getElementById('fatherName').value = 'Test Father Name';
+  document.getElementById('dob').value = '2012-05-14';
+  document.getElementById('admissionDate').value = '2020-01-10';
+  document.getElementById('gradeAdmitted').value = 'Year 4';
+  document.getElementById('currentGrade').value = 'Year 4';
+  certPreview.classList.add('show');
+  downloadActions.style.display = 'flex';
+}
+
 document.addEventListener('paste', (e) => {
   if (!document._activeSigBox) return;
   const item = Array.from(e.clipboardData.items || []).find(i => i.type.startsWith('image/'));
