@@ -137,10 +137,10 @@ body{
     text-align: center;
     font-family: 'Times New Roman', Georgia;
     font-size: 24px;
-    color: #a7791f;
+    color: #252525;
     margin-bottom: 10px;
     font-weight: 600;
-    margin: 0 0 30px;
+    margin: 0 0 40px;
     font-style: italic;
   }
   .cert-row{
@@ -185,7 +185,7 @@ body{
     font-weight:600;
     font-size: 13px;
     text-align:center;
-    margin: 26px 0 24px;
+    margin-top: 40px;
   }
   .sig-row{
     display:flex;
@@ -210,11 +210,11 @@ body{
   .sig-box input[type="file"]{ display:none; }
   .sig-line{ border-top: 1.5px solid var(--ink); padding-top:4px; font-size:12px; font-weight:600; }
   .cert-date-row{ 
-    margin-top: 22px;
+    margin-top: 24px;
     max-width: 100%;
     display: flex;
     text-align: center;
-    flex-direction: column;
+    flex-direction: row;
     align-content: center;
     justify-content: center; }
 
@@ -723,6 +723,28 @@ button.loading .btn-label{ opacity: 0.85; }
 
 .field-body label.chip-group-label{
   margin-bottom: 9px;
+}
+
+
+/* water mark */
+
+.cert-preview{
+  position: relative;
+}
+.cert-watermark{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 55%;
+  max-width: 380px;
+  opacity: 0.06;
+  pointer-events: none;
+  z-index: 0;
+}
+.cert-preview > *:not(.cert-watermark){
+  position: relative;
+  z-index: 1;
 }
 
 /* --- Conditional sub-fields (reason boxes, assessment picture, etc.) --- */
